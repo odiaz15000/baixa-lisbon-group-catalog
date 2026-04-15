@@ -1240,3 +1240,9 @@ FORMULARIO DE LA PAGINA RESERVATION
         font-size: 16px !important;
     }
 }
+/* Reserva el espacio del menú antes de que cargue */
+#universal-navbar {
+    min-height: 80px; /* Ajusta a la altura real de tu nav */
+    display: block;
+    background-color: #000; /* O el color de tu fondo para que no se vea blanco */
+}
