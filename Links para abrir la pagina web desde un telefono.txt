@@ -1,0 +1,6 @@
+Links para abrir la pagina web desde un telefono:
+
+
+http://192.168.1.14:5500/index.html (casa)
+
+http://192.168.1.64:5500/index.html  (oficina)
