@@ -332,4 +332,27 @@ document.addEventListener("DOMContentLoaded", () => {
             });
         }
     }
+
+    /* --- 7. SOLUCIÓN PARA RESETEAR FORMULARIO AL VOLVER ATRÁS (GITHUB PAGES) --- */
+    window.addEventListener('pageshow', (event) => {
+        // 'persisted' es true si la página se carga desde el caché (botón Atrás)
+        if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+            const resForm = document.getElementById('resForm');
+            if (resForm) {
+                // 1. Resetea todos los inputs de texto, fechas, etc.
+                resForm.reset(); 
+
+                // 2. Ejecutamos tu función interna para ocultar las cajas de menús y limpiar precios
+                if (typeof resetMenuBoxes === "function") {
+                    resetMenuBoxes();
+                }
+
+                // 3. Limpiamos manualmente el select de menús que se llena dinámicamente
+                const menuSelect = document.getElementById('menuSelect');
+                if (menuSelect) {
+                    menuSelect.innerHTML = '<option value="" disabled selected>Choose a menu</option>';
+                }
+            }
+        }
+    });
 });
