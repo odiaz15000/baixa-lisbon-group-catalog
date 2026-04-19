@@ -1703,3 +1703,378 @@ FORMULARIO DE LA PAGINA RESERVATION
         pointer-events: none !important;
     }
 }
+
+
+/* =======================================================
+   VARIANTE 2 — LISBOA EDITORIAL / BISTRÓ CLÁSICO
+   Basada en la versión funcional anterior, sin tocar la lógica
+   ======================================================= */
+
+:root {
+    --theme-bg: #f2ece2;
+    --theme-paper: #fbf7f1;
+    --theme-panel: #f7f0e6;
+    --theme-ink: #243144;
+    --theme-muted: #5f685f;
+    --theme-blue: #2f455f;
+    --theme-blue-2: #6e7f8d;
+    --theme-gold: #9f7a42;
+    --theme-line: rgba(47, 69, 95, 0.16);
+    --theme-shadow: 0 20px 40px rgba(36, 49, 68, 0.10);
+}
+
+html,
+body {
+    background: var(--theme-bg);
+}
+
+body {
+    color: var(--theme-ink);
+    background-image:
+        radial-gradient(circle at top left, rgba(159, 122, 66, 0.08), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(47, 69, 95, 0.06), transparent 24%);
+}
+
+body::before {
+    opacity: .03;
+    background-image:
+        linear-gradient(90deg, rgba(47, 69, 95, 0.18) 1px, transparent 1px),
+        linear-gradient(rgba(47, 69, 95, 0.18) 1px, transparent 1px);
+    background-size: 28px 28px;
+    background-position: 0 0, 0 0;
+    mask-image: linear-gradient(180deg, rgba(0,0,0,.20), transparent 20%, transparent 80%, rgba(0,0,0,.20));
+}
+
+h1,
+h2,
+h3,
+.section-title,
+.info-box h1,
+.info-box h2,
+.description h1,
+.contact-card h2 {
+    color: var(--theme-ink);
+    letter-spacing: .03em;
+}
+
+.main-navbar {
+    background:
+        linear-gradient(
+            90deg,
+            rgba(36, 49, 68, 0.96) 0%,
+            rgba(47, 69, 95, 0.94) 16%,
+            rgba(251, 247, 241, 0.97) 42%,
+            rgba(251, 247, 241, 0.97) 100%
+        ) !important;
+    border-bottom: 1px solid rgba(47, 69, 95, 0.14);
+    box-shadow: 0 12px 28px rgba(36, 49, 68, 0.08);
+}
+
+.logo-link img {
+    filter: none;
+}
+
+.nav-links li a {
+    color: var(--theme-ink) !important;
+    font-weight: 800;
+    letter-spacing: .16em;
+}
+
+.nav-links li a::after {
+    height: 1px;
+    bottom: -10px;
+    background: linear-gradient(90deg, transparent, rgba(159, 122, 66, 0.95), transparent);
+}
+
+.hero-section .overlay {
+    background:
+        linear-gradient(180deg, rgba(20, 28, 39, 0.42), rgba(20, 28, 39, 0.56)),
+        linear-gradient(90deg, rgba(159, 122, 66, .12), transparent 42%);
+}
+
+.info-box,
+.top-section,
+.box,
+.contact-card,
+.reservation-form,
+.reservations-page .menu-details-container,
+.footer-section,
+.reservations-page .footer-section,
+.res-slider-container {
+    background: rgba(251, 247, 241, 0.96);
+    border: 1px solid rgba(47, 69, 95, 0.12);
+    box-shadow: var(--theme-shadow);
+}
+
+.info-box,
+.top-section,
+.box,
+.contact-card,
+.reservation-form,
+.reservations-page .menu-details-container,
+.footer-section,
+.reservations-page .footer-section,
+.res-slider-container,
+.gallery-item,
+.galery-item,
+.slider,
+.lightbox-content {
+    position: relative;
+}
+
+.info-box::before,
+.top-section::after,
+.box::before,
+.contact-card::before,
+.reservation-form::before,
+.reservations-page .menu-details-container::before,
+.footer-section::before,
+.reservations-page .footer-section::before,
+.res-slider-container::before {
+    content: "";
+    position: absolute;
+    inset: 10px;
+    border: 1px solid rgba(159, 122, 66, 0.14);
+    pointer-events: none;
+}
+
+.info-box::before,
+.box::before,
+.contact-card::before,
+.reservation-form::before,
+.reservations-page .menu-details-container::before,
+.footer-section::before,
+.reservations-page .footer-section::before,
+.res-slider-container::before {
+    inset: 12px;
+}
+
+.top-section::after {
+    inset: 12px;
+}
+
+.description {
+    background:
+        linear-gradient(180deg, rgba(251, 247, 241, .98), rgba(243, 234, 222, .96));
+}
+
+.description h3,
+.form-group label,
+.menu-detail-item label,
+.entry-label,
+.reservations-page .menu-detail-item label,
+.reservations-page .section-title {
+    color: var(--theme-blue);
+}
+
+.info-box .subtitle {
+    background:
+        linear-gradient(135deg, rgba(47, 69, 95, 0.82), rgba(110, 127, 141, 0.72));
+    color: #fffdf8;
+    box-shadow: 0 8px 20px rgba(36, 49, 68, 0.10);
+}
+
+.info-box .divider {
+    width: 120px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--theme-gold), transparent);
+}
+
+.slider,
+.res-slider-container {
+    background:
+        linear-gradient(180deg, rgba(251, 247, 241, 1), rgba(242, 236, 226, 0.98));
+}
+
+.slide h3 {
+    color: var(--theme-blue);
+}
+
+.slider-buttons button,
+.btn-reservation,
+.btn-whatsapp,
+.submit-btn,
+button[type="submit"],
+.btn-submit {
+    background:
+        linear-gradient(180deg, #f4ecdf, #eadfcb) !important;
+    color: var(--theme-ink) !important;
+    border: 1px solid rgba(159, 122, 66, 0.24) !important;
+    box-shadow:
+        0 8px 18px rgba(36, 49, 68, 0.08),
+        inset 0 1px 0 rgba(255, 255, 255, 0.55);
+    text-transform: uppercase;
+}
+
+.slider-buttons button:hover,
+.btn-reservation:hover,
+.btn-whatsapp:hover,
+.submit-btn:hover,
+button[type="submit"]:hover,
+.btn-submit:hover {
+    background:
+        linear-gradient(180deg, #fbf7f1, #efe4d2) !important;
+    color: var(--theme-blue) !important;
+}
+
+.btn-whatsapp {
+    border-left: 4px solid var(--theme-gold) !important;
+}
+
+.gallery-item,
+.galery-item {
+    background: #ebe2d4;
+    border: 1px solid rgba(47, 69, 95, 0.10);
+    box-shadow: 0 16px 32px rgba(36, 49, 68, 0.08);
+}
+
+.galery-item::before {
+    background:
+        linear-gradient(180deg, rgba(25, 35, 48, 0.10) 0%, rgba(25, 35, 48, 0.36) 100%);
+}
+
+.galery-item::after {
+    color: #fffdf8 !important;
+    text-shadow: 0 3px 12px rgba(0,0,0,.42);
+    letter-spacing: .11em;
+}
+
+.contact-card h2 {
+    color: var(--theme-blue);
+}
+
+.follow-up-box {
+    background:
+        linear-gradient(180deg, rgba(245, 236, 222, 0.98), rgba(239, 228, 210, 0.98));
+    border-left: 4px solid var(--theme-gold);
+}
+
+.contact-icon {
+    background:
+        linear-gradient(180deg, #b58d55 0%, #8f6d3d 100%);
+    border: 1px solid rgba(111, 80, 34, 0.22);
+    box-shadow:
+        0 8px 18px rgba(99, 73, 34, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.contact-icon i {
+    color: #fbf7f1 !important;
+}
+
+.entry-data {
+    color: #454545;
+}
+
+.lightbox {
+    background: rgba(18, 24, 34, 0.985);
+}
+
+.lightbox-content {
+    border: 1px solid rgba(255, 247, 235, 0.10);
+    box-shadow:
+        0 26px 70px rgba(0, 0, 0, 0.48),
+        0 0 0 1px rgba(159, 122, 66, 0.12);
+}
+
+.close,
+.prev,
+.next {
+    background:
+        linear-gradient(180deg, rgba(251, 247, 241, 0.98), rgba(239, 228, 210, 0.96));
+    color: var(--theme-blue) !important;
+    border: 1px solid rgba(159, 122, 66, 0.24);
+}
+
+.close::before,
+.prev::before,
+.next::before {
+    border: 1px solid rgba(159, 122, 66, 0.12);
+}
+
+.close:hover,
+.prev:hover,
+.next:hover {
+    color: var(--theme-gold) !important;
+    background:
+        linear-gradient(180deg, rgba(255, 251, 245, 0.99), rgba(244, 234, 217, 0.98));
+}
+
+.main-footer,
+.reservations-page .main-footer {
+    background:
+        linear-gradient(180deg, #223449, #1a2939);
+    border-top: 3px solid rgba(159, 122, 66, .48);
+}
+
+.footer-section,
+.reservations-page .footer-section {
+    background: rgba(255, 255, 255, .04);
+    border: 1px solid rgba(255,255,255,.07);
+    box-shadow: none;
+}
+
+.footer-section::before,
+.reservations-page .footer-section::before {
+    inset: 14px;
+    border: 1px solid rgba(159, 122, 66, 0.16);
+}
+
+.footer-section h4,
+.reservations-page .footer-section h4 {
+    color: #f6eee2;
+    border-bottom: 1px solid rgba(246, 238, 226, 0.80);
+}
+
+.footer-section p,
+.reservations-page .footer-section p {
+    color: rgba(246, 238, 226, .78);
+}
+
+.footer-section ul li a,
+.reservations-page .footer-section ul li a,
+.footer-bottom p,
+.reservations-page .footer-bottom p {
+    color: #f6eee2;
+}
+
+.social-links a,
+.reservations-page .social-links a {
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(159, 122, 66, 0.24);
+}
+
+.social-links a:hover,
+.reservations-page .social-links a:hover {
+    background: #f8f2e8;
+    color: #1a2939;
+}
+
+#universal-navbar {
+    background: #f2ece2;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        background: rgba(251, 247, 241, 0.99) !important;
+        box-shadow: 0 18px 36px rgba(36, 49, 68, 0.10) !important;
+    }
+
+    .footer-section .social-links,
+    .reservations-page .footer-section .social-links {
+        justify-content: center;
+        align-items: center;
+    }
+
+    .info-box::before,
+    .box::before,
+    .contact-card::before,
+    .reservation-form::before,
+    .reservations-page .menu-details-container::before,
+    .footer-section::before,
+    .reservations-page .footer-section::before,
+    .res-slider-container::before,
+    .top-section::after {
+        inset: 8px;
+    }
+}
