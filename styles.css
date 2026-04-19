@@ -1,19 +1,88 @@
 /* =======================================================
    1. RESET Y CONFIGURACIÓN BASE
    ======================================================= */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+    --theme-bg: #f7f2e8;
+    --theme-paper: #fffdf8;
+    --theme-panel: #f9f6ef;
+    --theme-ink: #1b2f4a;
+    --theme-muted: #516173;
+    --theme-blue: #1f4e79;
+    --theme-blue-2: #567ea4;
+    --theme-gold: #b69052;
+    --theme-line: rgba(31, 78, 121, 0.14);
+    --theme-shadow: 0 18px 45px rgba(27, 47, 74, 0.10);
+    --theme-radius: 0px;
+    --theme-radius-sm: 0px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+html,
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #ffffff;
-    overflow-x: hidden;
-    width: 100%;
+    background: var(--theme-bg);
 }
 
+body {
+    width: 100%;
+    overflow-x: hidden;
+    font-family: 'Inter', sans-serif;
+    color: var(--theme-ink);
+    background-image:
+        radial-gradient(circle at top left, rgba(86, 126, 164, .08), transparent 28%),
+        radial-gradient(circle at bottom right, rgba(182, 144, 82, .07), transparent 24%);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: .06;
+    background-image:
+        linear-gradient(45deg, var(--theme-blue) 25%, transparent 25%),
+        linear-gradient(-45deg, var(--theme-blue) 25%, transparent 25%),
+        linear-gradient(45deg, transparent 75%, var(--theme-blue) 75%),
+        linear-gradient(-45deg, transparent 75%, var(--theme-blue) 75%);
+    background-size: 42px 42px;
+    background-position: 0 0, 0 21px, 21px -21px, -21px 0;
+    mask-image: linear-gradient(180deg, rgba(0, 0, 0, .35), transparent 22%, transparent 78%, rgba(0, 0, 0, .35));
+    z-index: 0;
+}
+
+body>* {
+    position: relative;
+    z-index: 1;
+}
+
+h1,
+h2,
+h3,
+.section-title,
+.info-box h1,
+.info-box h2,
+.description h1 {
+    font-family: 'Cormorant Garamond', serif;
+    letter-spacing: .02em;
+    color: var(--theme-ink);
+}
+
+p,
+li,
+a,
+label,
+input,
+select,
+textarea,
+button {
+    font-family: 'Inter', sans-serif;
+}
 
 /* =======================================================
    2. INICIO DEL STYLE PARA TODOS LOS RESTAURANTES
@@ -21,20 +90,31 @@ body {
 
 /* ===================== CONTAINER GENERAL ===================== */
 .container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 60px auto;
-    padding: 20px;
+    padding: 20px 20px 70px;
 }
 
 /* ===================== CARD SUPERIOR ===================== */
 .top-section {
     display: flex;
-    gap: 40px;
+    gap: 0;
     align-items: stretch;
-    background: #ffffff;
-    border-radius: 12px;
+    background: rgba(255, 253, 248, 0.94);
+    border: 1px solid var(--theme-line);
+    border-radius: 0 !important;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--theme-shadow);
+    position: relative;
+}
+
+.top-section::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    border: 1px solid rgba(182, 144, 82, .24);
+    border-radius: 0 !important;
 }
 
 /* IMAGEN */
@@ -46,56 +126,69 @@ body {
 .image-container img {
     width: 100%;
     height: 100%;
+    min-height: 100%;
     object-fit: cover;
     display: block;
+    filter: saturate(1.02) contrast(1.02);
 }
 
 /* TEXTO */
 .description {
     flex: 1;
-    padding: 40px;
+    padding: 48px;
+    background: linear-gradient(180deg, rgba(255, 253, 248, .98), rgba(245, 239, 228, .96));
 }
 
 .description h1 {
-    font-size: 36px;
-    margin-bottom: 15px;
+    font-size: clamp(2.6rem, 4vw, 4.6rem);
+    line-height: .96;
+    margin-bottom: 18px;
 }
 
 .description h3 {
-    margin-top: 25px;
-    font-size: 18px;
-    letter-spacing: 1px;
+    margin-top: 24px;
+    margin-bottom: 8px;
+    color: var(--theme-blue);
+    font-size: .95rem;
+    letter-spacing: .18em;
+    text-transform: uppercase;
 }
 
 .description p {
     line-height: 1.7;
-    color: #444;
+    color: var(--theme-muted);
 }
 
 /* ===================== MENUS + CONDITIONS ===================== */
 .menu-conditions {
     display: flex;
-    gap: 30px;
+    gap: 26px;
     margin-top: 50px;
 }
 
 .box {
     flex: 1;
-    background: #ffffff;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    background: rgba(255, 253, 248, 0.94);
+    border: 1px solid var(--theme-line);
+    box-shadow: var(--theme-shadow);
+    padding: 30px;
+    border-radius: 0 !important;
 }
 
 .section-title {
-    font-size: 22px;
-    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: clamp(2rem, 2.7vw, 3rem);
+    letter-spacing: 2px;
     text-transform: uppercase;
 }
 
 /* ===================== SLIDER ===================== */
 .slider {
     overflow: hidden;
+    border-radius: 0 !important;
+    background: linear-gradient(180deg, #fffdf8, #f7f2e8);
+    border: 1px solid rgba(31, 78, 121, 0.10);
 }
 
 .slides {
@@ -105,9 +198,20 @@ body {
 
 .slide {
     min-width: 100%;
-    background: #f7f7f7;
-    padding: 20px;
-    border-radius: 8px;
+    background: transparent;
+    padding: 24px;
+    border-radius: 0 !important;
+}
+
+.slide h3 {
+    color: var(--theme-blue);
+    font-size: 1.3rem;
+    margin-bottom: 14px;
+}
+
+.slide p,
+.menu-detail-item p {
+    color: var(--theme-muted);
 }
 
 .slider-buttons {
@@ -115,123 +219,65 @@ body {
     margin-top: 10px;
 }
 
-.slider-buttons button {
-    padding: 8px 14px;
-    border: none;
-    background: #333;
-    color: white;
+.slider-buttons button,
+.btn-reservation,
+.btn-whatsapp,
+.submit-btn,
+button[type="submit"] {
+    border: 1px solid rgba(31, 78, 121, 0.16);
+    background: linear-gradient(180deg, #f7f2e8, #ece2d0);
+    color: var(--theme-ink);
+    border-radius: 0 !important;
+    box-shadow: 0 8px 20px rgba(27, 47, 74, .10);
+    font-weight: 700;
+    letter-spacing: .04em;
     cursor: pointer;
-    border-radius: 5px;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.slider-buttons button:hover {
-    background: #000;
+.slider-buttons button {
+    padding: 8px 14px;
+}
+
+.slider-buttons button:hover,
+.btn-reservation:hover,
+.btn-whatsapp:hover,
+.submit-btn:hover,
+button[type="submit"]:hover {
+    background: linear-gradient(180deg, #fffdf8, #efe7d8);
+    transform: translateY(-1px);
 }
 
 /* ===================== GALERIA EN CUADRICULA ===================== */
 .gallery-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-    gap: 15px;
+    gap: 22px;
     margin-top: 20px;
 }
 
 .gallery-item {
     cursor: pointer;
+    position: relative;
     overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 0 !important;
+    box-shadow: 0 16px 36px rgba(27, 47, 74, 0.10);
+    border: 1px solid rgba(31, 78, 121, 0.08);
+    background: #f1ece2;
+    height: 150px;
 }
 
 .gallery-item img {
     width: 100%;
     height: 150px;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    position: relative;
+    z-index: 1;
+    transition: transform .45s ease, filter .35s ease;
 }
 
 .gallery-item:hover img {
-    transform: scale(1.1);
-}
-
-/* LIGHTBOX */
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 10000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.9);
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-}
-
-.lightbox-content {
-    max-width: 90%;
-    max-height: 80%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.close,
-.prev,
-.next {
-    color: white;
-    font-size: 40px;
-    font-weight: bold;
-    cursor: pointer;
-    user-select: none;
-}
-
-.close {
-    position: absolute;
-    top: 20px;
-    right: 30px;
-}
-
-.prev,
-.next {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.prev {
-    left: 30px;
-}
-
-.next {
-    right: 30px;
-}
-
-/* ===================== RESPONSIVE ===================== */
-@media (max-width: 768px) {
-    .top-section {
-        flex-direction: column;
-    }
-
-    .menu-conditions {
-        flex-direction: column;
-    }
-
-    .image-container {
-        height: 250px;
-    }
-}
-
-
-/*======= MUESTRA TEXTO CUANDO NO HAY IMAGEN EN LA GALERIA =========*/
-
-.gallery-item {
-    position: relative;
-    overflow: hidden;
-    background-color: #f0f0f0;
-    /* Fondo gris claro base */
-    height: 150px;
-    /* Esta altura es vital para que los cuadros no colapsen */
+    transform: scale(1.04);
 }
 
 .gallery-item.placeholder {
@@ -239,39 +285,144 @@ body {
     justify-content: center;
     align-items: center;
     background-color: #ddd;
-    /* Gris más oscuro para el recuadro */
     color: #555;
     font-size: 16px;
     font-weight: bold;
     text-align: center;
 }
 
+/* LIGHTBOX */
+.lightbox {
+    display: none;
+    position: fixed;
+    z-index: 99999;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(5, 12, 22, 0.985);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-/* =======================================================
-   2. FIN DEL STYLE PARA TODOS LOS RESTAURANTES
-   ======================================================= */
+.lightbox-content {
+    max-width: 90vw;
+    max-height: 82vh;
+    margin-bottom: 0;
+    border-radius: 0 !important;
+    border: 1px solid rgba(255, 253, 248, 0.12);
+    box-shadow:
+        0 26px 70px rgba(0, 0, 0, 0.42),
+        0 0 0 1px rgba(182, 144, 82, 0.08);
+}
+
+.close,
+.prev,
+.next {
+    position: absolute;
+    width: 58px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(180deg, rgba(255, 253, 248, 0.98), rgba(244, 236, 222, 0.96));
+    color: var(--theme-blue) !important;
+    border: 1px solid rgba(31, 78, 121, 0.18);
+    border-radius: 0 !important;
+    box-shadow:
+        0 10px 24px rgba(0, 0, 0, 0.22),
+        0 0 0 1px rgba(182, 144, 82, 0.10) inset;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.9rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+    transition:
+        transform 0.22s ease,
+        background 0.22s ease,
+        color 0.22s ease,
+        box-shadow 0.22s ease,
+        border-color 0.22s ease;
+}
+
+.close::before,
+.prev::before,
+.next::before {
+    content: "";
+    position: absolute;
+    inset: 4px;
+    border-radius: 0 !important;
+    border: 1px solid rgba(31, 78, 121, 0.08);
+    pointer-events: none;
+}
+
+.close:hover,
+.prev:hover,
+.next:hover {
+    background: linear-gradient(180deg, #fffdf8, #efe4d0);
+    color: var(--theme-gold) !important;
+    border-color: rgba(182, 144, 82, 0.28);
+    box-shadow:
+        0 14px 28px rgba(0, 0, 0, 0.28),
+        0 0 0 1px rgba(182, 144, 82, 0.16) inset;
+}
+
+.close {
+    top: 24px;
+    right: 24px;
+    transform: none;
+}
+
+.prev,
+.next {
+    top: 50%;
+}
+
+.prev {
+    left: 24px;
+    transform: translateY(-50%);
+}
+
+.next {
+    right: 24px;
+    transform: translateY(-50%);
+}
+
+.close:hover {
+    transform: translateY(-1px);
+}
+
+.prev:hover,
+.next:hover {
+    transform: translateY(-50%) scale(1.04);
+}
 
 /* =======================================================
    3. NAVEGACIÓN MODERNA Y RESPONSIVE
    ======================================================= */
 .main-navbar {
-    background-color: #1a1a1a;
-    /* Mismo color que el footer */
+    background: rgba(247, 242, 232, 0.88);
     width: 100%;
     position: sticky;
     top: 0;
     z-index: 2000;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(31, 78, 121, 0.12);
+    box-shadow: 0 10px 30px rgba(27, 47, 74, 0.08);
 }
 
 .navbar-container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    height: 90px;
+    height: 88px;
 }
 
 .logo-link {
@@ -283,6 +434,7 @@ body {
 .logo-link img {
     height: 60px;
     width: auto;
+    filter: none;
 }
 
 .nav-links {
@@ -292,16 +444,30 @@ body {
 }
 
 .nav-links li a {
-    color: #bbb;
+    color: var(--theme-ink);
     text-decoration: none;
-    font-size: 0.9rem;
-    font-weight: bold;
-    letter-spacing: 1px;
+    font-size: .92rem;
+    font-weight: 700;
+    letter-spacing: .14em;
+    position: relative;
     transition: color 0.3s ease;
 }
 
-.nav-links li a:hover {
-    color: #ffffff;
+.nav-links li a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    width: 100%;
+    height: 2px;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform .3s ease;
+    background: linear-gradient(90deg, transparent, var(--theme-gold), transparent);
+}
+
+.nav-links li a:hover::after {
+    transform: scaleX(1);
 }
 
 /* Botón Sandwich oculto por defecto */
@@ -309,48 +475,9 @@ body {
     display: none;
     background: none;
     border: none;
-    color: white;
+    color: var(--theme-blue);
     font-size: 1.5rem;
     cursor: pointer;
-}
-
-/* =======================================================
-   RESPONSIVE NAVBAR (Móvil)
-   ======================================================= */
-@media (max-width: 768px) {
-    .menu-toggle {
-        display: block;
-    }
-
-    .nav-links {
-        position: absolute;
-        top: 90px;
-        left: 0;
-        width: 100%;
-        background-color: #1a1a1a;
-        flex-direction: column;
-        gap: 0;
-        text-align: center;
-        max-height: 0;
-        /* Escondido */
-        overflow: hidden;
-        transition: max-height 0.4s ease-in-out;
-    }
-
-    .nav-links.active {
-        max-height: 400px;
-        /* Se expande al hacer clic */
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .nav-links li {
-        border-top: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .nav-links li a {
-        display: block;
-        padding: 20px;
-    }
 }
 
 /* =======================================================
@@ -359,9 +486,8 @@ body {
 .hero-section {
     position: relative;
     width: 100%;
-    min-height: 100vh;
+    min-height: 96vh;
     background-image: url('fotos_aldea/aldea1.webp');
-    /* Fondo por defecto (Index) */
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
@@ -373,11 +499,10 @@ body {
 
 .hero-section .overlay {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(10, 25, 45, 0.42), rgba(10, 25, 45, 0.55)),
+        linear-gradient(90deg, rgba(182, 144, 82, .10), transparent 45%);
     z-index: 1;
 }
 
@@ -385,41 +510,38 @@ body {
     position: relative;
     z-index: 2;
     width: 100%;
-    max-width: 850px;
+    max-width: 980px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
     padding: 0 20px;
 }
 
 /* Cajas de información (Stack Boxes) */
 .info-box {
-    background-color: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 253, 248, 0.94);
     width: 100%;
-    padding: 45px;
-    border-radius: 12px;
+    padding: 52px;
+    border-radius: 0 !important;
     text-align: center;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: var(--theme-shadow);
+    border: 1px solid var(--theme-line);
 }
 
 .info-box h1 {
-    font-size: 34px;
-    color: #222;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: 2px;
+    font-size: clamp(2.6rem, 4vw, 4.6rem);
+    line-height: .96;
+    margin-bottom: 18px;
 }
 
 .info-box h2 {
-    font-size: 24px;
-    color: #444;
+    font-size: clamp(2rem, 2.7vw, 3rem);
     margin-bottom: 15px;
 }
 
 .info-box p {
-    color: #555;
+    color: var(--theme-muted);
     line-height: 1.7;
     margin-bottom: 15px;
     font-size: 18px;
@@ -427,92 +549,91 @@ body {
 
 .info-box .subtitle {
     font-weight: bold;
-    color: #000;
-    font-size: 20px;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(31, 78, 121, 0.50), rgba(86, 126, 164, 0.40));
+    display: inline-block;
+    padding: 12px 18px;
+    border-radius: 0 !important;
+    font-size: 1rem;
+    letter-spacing: .04em;
 }
 
 .info-box .divider {
+    width: 88px;
     height: 3px;
-    width: 70px;
-    background-color: #333;
-    margin: 25px auto;
+    background: linear-gradient(90deg, var(--theme-blue), var(--theme-gold));
+    margin: 22px auto;
 }
 
 /* =======================================================
    5. GALERÍA DE RESTAURANTES (RESTAURANTS.HTML)
    ======================================================= */
 .section-container {
-    padding: 80px 20px;
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
-}
-
-.section-title {
-    text-align: center;
-    margin-bottom: 40px;
-    font-size: 32px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    padding: 56px 20px 70px;
 }
 
 .galery-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 25px;
+    gap: 22px;
 }
 
 .galery-item {
     position: relative;
     height: 350px;
     overflow: hidden;
-    background-color: #eee;
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 0 !important;
+    box-shadow: 0 16px 36px rgba(27, 47, 74, 0.10);
+    border: 1px solid rgba(31, 78, 121, 0.08);
+    background: #f1ece2;
 }
 
 .galery-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    position: relative;
+    z-index: 1;
+    transition: transform .45s ease, filter .35s ease;
 }
 
 .galery-item::before {
     content: "";
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.4);
+    inset: 0;
+    background: linear-gradient(180deg, rgba(12, 28, 45, 0.14) 0%, rgba(12, 28, 45, 0.28) 100%);
     z-index: 1;
-    transition: background 0.4s;
     pointer-events: none;
 }
 
 .galery-item::after {
     content: attr(data-name);
     position: absolute;
-    top: 50%;
-    left: 50%;
+    inset: 50% auto auto 50%;
     transform: translate(-50%, -50%);
-    color: white;
-    font-size: 20px;
-    font-weight: bold;
-    text-transform: uppercase;
+    width: calc(100% - 48px);
+    padding: 0;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    color: #fffdf8 !important;
     text-align: center;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, .35), 0 1px 2px rgba(0, 0, 0, .45);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.65rem, 2.2vw, 2.35rem);
+    font-weight: 700;
+    letter-spacing: .08em;
+    line-height: 1.05;
     z-index: 2;
-    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.9);
-    width: 90%;
-    pointer-events: none;
+    pointer-events: none !important;
 }
 
 .galery-item:hover img {
-    transform: scale(1.1);
-}
-
-.galery-item:hover::before {
-    background: rgba(0, 0, 0, 0.55);
+    transform: scale(1.04);
 }
 
 /* =======================================================
@@ -536,17 +657,20 @@ body {
     background-image: url('fotos_pata/pata1.png');
 }
 
-
 /*===================================
 FORMULARIO DE LA PAGINA RESERVATION
 ====================================*/
-
 .reservation-form {
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 15px;
     text-align: left;
     margin-top: 20px;
+    border-radius: 0 !important;
+    padding: 30px;
+    background: rgba(255, 253, 248, .98);
+    border: 1px solid var(--theme-line);
+    box-shadow: var(--theme-shadow);
 }
 
 .form-group {
@@ -554,21 +678,31 @@ FORMULARIO DE LA PAGINA RESERVATION
     flex-direction: column;
 }
 
-.form-group label {
-    font-weight: bold;
+.form-group label,
+.menu-detail-item label,
+.entry-label {
+    color: var(--theme-blue);
+    letter-spacing: .1em;
+    font-size: .8rem;
+    font-weight: 700;
     margin-bottom: 5px;
-    color: #333;
-    font-size: 14px;
+    text-transform: uppercase;
 }
 
 .form-group input,
 .form-group select,
-.form-group textarea {
+.form-group textarea,
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea,
+.menu-detail-item select {
     padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 0 !important;
+    border: 1px solid rgba(31, 78, 121, 0.16);
+    background: #fff;
+    color: var(--theme-ink);
     font-family: inherit;
-    background-color: white;
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, .7);
 }
 
 .full-width {
@@ -577,20 +711,23 @@ FORMULARIO DE LA PAGINA RESERVATION
 
 .btn-submit {
     grid-column: span 2;
-    background-color: #333;
-    color: white;
     padding: 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: background 0.3s;
     margin-top: 10px;
+    border: 1px solid rgba(31, 78, 121, 0.16);
+    background: linear-gradient(180deg, #f7f2e8, #ece2d0);
+    color: var(--theme-ink);
+    border-radius: 0 !important;
+    box-shadow: 0 8px 20px rgba(27, 47, 74, .10);
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .btn-submit:hover {
-    background-color: #000;
+    background: linear-gradient(180deg, #fffdf8, #efe7d8);
+    transform: translateY(-1px);
 }
 
 /* =======================================================
@@ -609,10 +746,11 @@ FORMULARIO DE LA PAGINA RESERVATION
 }
 
 .contact-card {
-    background: #fdfdfd;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    background: rgba(255, 253, 248, 0.94);
+    padding: 34px;
+    border-radius: 0 !important;
+    box-shadow: var(--theme-shadow);
+    border: 1px solid var(--theme-line);
     color: #333;
     flex: 1;
     min-width: 350px;
@@ -621,40 +759,29 @@ FORMULARIO DE LA PAGINA RESERVATION
 }
 
 .contact-card h2 {
-    margin-top: 0;
-    color: #b58d3e;
-    font-size: 20px;
+    color: var(--theme-gold);
+    font-size: clamp(2rem, 2.7vw, 3rem);
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-weight: 700;
     margin-bottom: 25px;
 }
 
-/* Botón reutilizado para New Requests y Formularios */
 .btn-reservation {
     display: block;
     width: 100%;
     padding: 15px;
-    background-color: #333;
-    color: white;
     text-align: center;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
     margin-top: 20px;
-    transition: background 0.3s;
-}
-
-.btn-reservation:hover {
-    background-color: #000;
 }
 
 .follow-up-box {
-    background-color: #f8f3e6;
+    background: linear-gradient(180deg, #f6efe1, #f1e7d3);
     border-left: 4px solid #b58d3e;
     padding: 20px;
     margin-bottom: 30px;
-    border-radius: 4px;
+    border-radius: 0 !important;
 }
 
 .contact-details-list {
@@ -666,44 +793,70 @@ FORMULARIO DE LA PAGINA RESERVATION
 
 .contact-entry-pair {
     display: flex;
-    gap: 15px;
     align-items: flex-start;
-    /* Iconos alineados arriba */
+    gap: 22px;
 }
 
 .contact-icon {
-    font-size: 28px;
-    color: #b58d3e;
-    min-width: 30px;
-    text-align: center;
+    width: 66px;
+    height: 66px;
+    min-width: 66px;
+    flex: 0 0 66px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0;
+    border-radius: 0 !important;
+    background: linear-gradient(180deg, #d4ae67 0%, #bf9650 100%);
+    border: 1px solid rgba(146, 108, 43, 0.22);
+    box-shadow:
+        0 8px 18px rgba(123, 91, 34, 0.16),
+        inset 0 1px 0 rgba(255, 255, 255, 0.22);
+}
+
+.contact-icon i {
+    display: block;
+    color: #234a76 !important;
+    font-size: 1.9rem;
+    line-height: 1;
+}
+
+.contact-icon .fa-location-dot {
+    font-size: 2rem;
+    transform: translateY(1px);
+}
+
+.contact-icon .fa-phone {
+    font-size: 1.72rem;
+    transform: rotate(-8deg);
 }
 
 .entry-content {
     display: flex;
-    /* Cambiamos de grid a flex */
     flex-direction: column;
-    /* Forzamos que el contenido vaya hacia abajo */
-    gap: 4px;
-    /* Pequeño espacio entre el título y la dirección/teléfono */
+    gap: 6px;
+    padding-top: 2px;
     font-size: 16px;
 }
 
 .entry-label {
-    font-weight: 700;
-    color: #222;
+    font-size: 0.82rem;
+    letter-spacing: 0.12em;
+    font-weight: 800;
+}
+
+.entry-data {
+    color: #3e3e3e;
+    font-size: 1rem;
+    line-height: 1.4;
 }
 
 .btn-whatsapp {
     display: block;
     width: 100%;
     padding: 18px;
-    background: linear-gradient(180deg, #2ecc71 0%, #27ae60 100%);
-    color: white;
     text-align: center;
     text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    box-shadow: 0 4px 15px rgba(39, 174, 96, 0.3);
 }
 
 /* =======================================================
@@ -715,24 +868,52 @@ FORMULARIO DE LA PAGINA RESERVATION
     }
 }
 
-@media (max-width: 800px) {
-    .entry-content {
-        grid-template-columns: 1fr;
-    }
-}
-
 @media (max-width: 768px) {
-    #navigation_bar_top {
+    .top-section {
         flex-direction: column;
     }
 
-    #navigation_bar_top li a {
-        padding: 20px 0;
+    .menu-conditions {
+        flex-direction: column;
     }
 
-    #navigation_bar_top li a.logo-link {
-        height: 100px;
-        justify-content: center;
+    .image-container {
+        height: 250px;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 90px;
+        left: 0;
+        width: 100%;
+        background: rgba(247, 242, 232, .98);
+        backdrop-filter: blur(8px);
+        flex-direction: column;
+        gap: 0;
+        text-align: center;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease-in-out;
+        border-top: 1px solid rgba(31, 78, 121, .1);
+    }
+
+    .nav-links.active {
+        max-height: 400px;
+        border-bottom: 1px solid rgba(31, 78, 121, 0.1);
+    }
+
+    .nav-links li {
+        border-top: 1px solid rgba(31, 78, 121, 0.05);
+    }
+
+    .nav-links li a {
+        display: block;
+        padding: 20px;
+        color: var(--theme-ink);
     }
 
     .hero-section {
@@ -743,8 +924,12 @@ FORMULARIO DE LA PAGINA RESERVATION
         max-width: 100%;
     }
 
-    .info-box {
-        padding: 30px;
+    .info-box,
+    .description,
+    .box,
+    .contact-card,
+    .reservation-form {
+        padding: 24px;
     }
 
     .info-box h1 {
@@ -755,8 +940,82 @@ FORMULARIO DE LA PAGINA RESERVATION
         grid-template-columns: 1fr;
     }
 
+    .galery-item::after {
+        width: calc(100% - 28px);
+        font-size: 1.4rem !important;
+        letter-spacing: .06em;
+    }
+
     .section-title {
         font-size: 24px;
+    }
+
+    .footer-container {
+        text-align: center;
+    }
+
+    .footer-section {
+        padding: 24px 22px !important;
+    }
+
+    .footer-section h4 {
+        margin-top: 20px;
+    }
+
+    .res-arrow {
+        font-size: 3rem !important;
+    }
+
+    .close,
+    .prev,
+    .next {
+        width: 48px;
+        height: 48px;
+        font-size: 1.45rem;
+        border-radius: 0 !important;
+    }
+
+    .close {
+        top: 16px;
+        right: 16px;
+    }
+
+    .prev {
+        left: 12px;
+    }
+
+    .next {
+        right: 12px;
+    }
+
+    .close::before,
+    .prev::before,
+    .next::before {
+        inset: 3px;
+        border-radius: 0 !important;
+    }
+
+    .contact-entry-pair {
+        gap: 16px;
+    }
+
+    .contact-icon {
+        width: 58px;
+        height: 58px;
+        min-width: 58px;
+        flex: 0 0 58px;
+    }
+
+    .contact-icon i {
+        font-size: 1.65rem;
+    }
+
+    .contact-icon .fa-location-dot {
+        font-size: 1.75rem;
+    }
+
+    .contact-icon .fa-phone {
+        font-size: 1.5rem;
     }
 }
 
@@ -774,8 +1033,6 @@ FORMULARIO DE LA PAGINA RESERVATION
 /* =======================================================
    10. ANIMACIONES DE PAZ VISUAL
    ======================================================= */
-
-/* Definición del movimiento suave */
 @keyframes fadeInUp {
     from {
         opacity: 0;
@@ -788,14 +1045,11 @@ FORMULARIO DE LA PAGINA RESERVATION
     }
 }
 
-/* Clase que aplica la animación */
 .reveal {
     opacity: 0;
-    /* Empieza invisible */
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-/* Delays para que los elementos aparezcan uno tras otro (efecto cascada) */
 .delay-1 {
     animation-delay: 0.2s;
 }
@@ -811,8 +1065,6 @@ FORMULARIO DE LA PAGINA RESERVATION
 /* ============================================================================
    11. ocultar formato de fecha por defecto en el campo fecha de reservations
    ============================================================================ */
-
-
 #fecha:invalid {
     color: transparent;
 }
@@ -825,33 +1077,41 @@ FORMULARIO DE LA PAGINA RESERVATION
 12. FOOTER
 =========================================*/
 .main-footer {
-    background-color: #1a1a1a;
-    /* O el color exacto de tu nav_bar */
+    background: linear-gradient(180deg, #143456, #0d2742);
     color: #ffffff;
-    padding: 60px 20px 20px 20px;
+    padding: 60px 20px 20px;
     margin-top: 50px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid rgba(182, 144, 82, .45);
 }
 
 .footer-container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    gap: 28px;
+    align-items: stretch;
 }
 
 .footer-logo {
     width: 120px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     filter: brightness(1);
+}
+
+.footer-section {
+    background: rgba(255, 255, 255, .05);
+    border-radius: 0 !important;
+    border: 1px solid rgba(255, 255, 255, .08);
+    box-shadow: none;
+    padding: 30px 30px 28px;
 }
 
 .footer-section h4 {
     font-size: 1.1rem;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     letter-spacing: 2px;
-    color: #fff;
+    color: #f7f2e8;
     border-bottom: 1px solid #fff;
     display: inline-block;
     padding-bottom: 5px;
@@ -860,17 +1120,20 @@ FORMULARIO DE LA PAGINA RESERVATION
 .footer-section ul {
     list-style: none;
     padding: 0;
+    display: grid;
+    gap: 14px;
 }
 
 .footer-section ul li {
-    margin-bottom: 12px;
+    margin-bottom: 0;
 }
 
 .footer-section ul li a {
     text-decoration: none;
-    color: #bbb;
+    color: #f7f2e8;
     transition: color 0.3s ease;
     font-size: 0.9rem;
+    line-height: 1.7;
 }
 
 .footer-section ul li a:hover {
@@ -878,25 +1141,37 @@ FORMULARIO DE LA PAGINA RESERVATION
 }
 
 .footer-section p {
-    color: #bbb;
+    color: rgba(247, 242, 232, .78);
     font-size: 0.9rem;
-    line-height: 1.6;
+    line-height: 1.7;
+}
+
+.social-links {
+    display: flex;
+    gap: 14px;
+    margin-top: 14px;
 }
 
 .social-links a {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     color: #fff;
-    margin-right: 15px;
     font-size: 0.8rem;
     font-weight: bold;
+    border-radius: 0 !important;
+    background: rgba(255, 255, 255, .10);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 5px 10px;
+    padding: 0;
     transition: all 0.3s ease;
 }
 
 .social-links a:hover {
     background: #fff;
-    color: #000;
+    color: #0d2742;
 }
 
 .footer-bottom {
@@ -908,19 +1183,8 @@ FORMULARIO DE LA PAGINA RESERVATION
 
 .footer-bottom p {
     font-size: 0.8rem;
-    color: #666;
+    color: #f7f2e8;
     letter-spacing: 1px;
-}
-
-/* Ajuste para móviles */
-@media (max-width: 768px) {
-    .footer-container {
-        text-align: center;
-    }
-
-    .footer-section h4 {
-        margin-top: 20px;
-    }
 }
 
 /* --- ESTILOS EXCLUSIVOS SLIDER INDEX --- */
@@ -929,54 +1193,68 @@ FORMULARIO DE LA PAGINA RESERVATION
     max-width: 1200px;
     margin: 40px auto;
     overflow: hidden;
-    /* Corta los otros 6 restaurantes para que no se vean */
+    gap: 16px;
 }
 
 .res-slider-container {
     width: 100%;
+    border-radius: 0 !important;
+    overflow: hidden;
+    background: linear-gradient(180deg, #fffdf8, #f7f2e8);
+    border: 1px solid rgba(31, 78, 121, 0.10);
+    box-shadow: var(--theme-shadow);
 }
 
 .res-slides-track {
     display: flex !important;
     flex-wrap: nowrap !important;
-    /* Obliga a los 9 a estar en una sola fila */
     transition: transform 0.6s ease-in-out !important;
     will-change: transform;
-    /* Ayuda al navegador a preparar el movimiento */
     width: 100%;
 }
 
 .res-slide {
     flex: 0 0 33.333% !important;
-    /* 3 por pantalla en escritorio */
     min-width: 33.333% !important;
     padding: 10px;
     box-sizing: border-box;
 }
 
-/* Flechas: Sin fondo, solo el símbolo con sombra para que resalten */
+.res-slide .galery-item {
+    border-radius: 0 !important;
+}
+
+.res-slide .galery-item::after,
+.section-container .galery-item::after {
+    font-size: clamp(1.45rem, 1.95vw, 2rem);
+}
+
+/* Flechas: Sin fondo, solo el símbolo */
 .res-arrow {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    background: transparent;
-    /* Quitamos el óvalo/círculo */
-    border: none;
-    color: white;
-    font-size: 3.5rem;
-    /* Flechas más grandes y finas */
+    background: transparent !important;
+    border: 0 !important;
+    color: var(--theme-blue) !important;
+    font-size: 3.5rem !important;
+    line-height: 1;
     cursor: pointer;
     z-index: 1000;
-    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.8);
-    /* Sombra para que se vean sobre fotos claras */
+    text-shadow: 2px 2px 15px rgba(0, 0, 0, 0.25);
     transition: all 0.3s ease;
-    padding: 0 15px;
+    padding: 0 15px !important;
+    width: auto !important;
+    height: auto !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
 }
 
 .res-arrow:hover {
-    scale: 1.2;
-    color: #ddd;
-    /* Cambian ligeramente de color al pasar el mouse */
+    color: var(--theme-gold) !important;
+    transform: translateY(-50%) scale(1.05);
 }
 
 .res-arrow.prev {
@@ -987,45 +1265,32 @@ FORMULARIO DE LA PAGINA RESERVATION
     right: 0;
 }
 
-/* Responsive: 1 restaurante por pantalla en móviles */
-@media (max-width: 768px) {
-    .res-slide {
-        flex: 0 0 100% !important;
-        min-width: 100% !important;
-    }
-
-    .res-arrow {
-        font-size: 2.5rem;
-    }
-}
-
 /* =======================================================
    RESERVATIONS PAGE SPECIFIC (ENCAPSULADO)
    ======================================================= */
-
 .reservations-page .menu-details-container {
     display: none;
-    background: rgba(255, 255, 255, 0.05);
-    padding: 20px;
-    border-radius: 8px;
+    background: linear-gradient(180deg, #fffdf8, #f6efe1);
+    padding: 22px;
+    border-radius: 0 !important;
     margin-top: 15px;
     border-left: 4px solid #bc9667;
     animation: fadeInUp 0.5s ease-out;
     grid-column: 1 / -1;
     width: 100%;
     box-sizing: border-box;
+    box-shadow: var(--theme-shadow);
 }
 
-/* Asegura que los selects e inputs internos no se salgan del contenedor */
 .reservations-page .menu-details-container select,
 .reservations-page .menu-details-container input {
     width: 100%;
     box-sizing: border-box;
-    background: rgba(0, 0, 0, 0.2);
-    color: #fff;
+    background: #fff;
+    color: var(--theme-ink);
     border: 1px solid rgba(188, 150, 103, 0.4);
     padding: 10px;
-    border-radius: 4px;
+    border-radius: 0 !important;
     margin-top: 5px;
 }
 
@@ -1045,7 +1310,7 @@ FORMULARIO DE LA PAGINA RESERVATION
 .reservations-page .menu-detail-item p {
     margin: 0;
     font-size: 0.95rem;
-    color: #ddd;
+    color: var(--theme-muted);
 }
 
 .reservations-page .price-tag {
@@ -1070,7 +1335,7 @@ FORMULARIO DE LA PAGINA RESERVATION
 .reservations-page .mode-selector {
     background: rgba(188, 150, 103, 0.1);
     padding: 10px;
-    border-radius: 5px;
+    border-radius: 0 !important;
     border: 1px dashed #bc9667;
     margin-bottom: 20px;
 }
@@ -1081,39 +1346,45 @@ FORMULARIO DE LA PAGINA RESERVATION
     font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 2px;
-    margin: 30px 0 10px 0;
+    margin: 30px 0 10px;
     border-bottom: 1px solid rgba(188, 150, 103, 0.2);
     padding-bottom: 5px;
 }
 
 /* FOOTER ESPECÍFICO DE RESERVAS */
 .reservations-page .main-footer {
-    background-color: #1a1a1a;
+    background: linear-gradient(180deg, #143456, #0d2742);
     color: #ffffff;
-    padding: 60px 20px 20px 20px;
+    padding: 60px 20px 20px;
     margin-top: 50px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    border-top: 3px solid rgba(182, 144, 82, .45);
 }
 
 .reservations-page .footer-container {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
+    gap: 28px;
+    align-items: stretch;
 }
 
 .reservations-page .footer-logo {
     width: 120px;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     filter: brightness(1);
+}
+
+.reservations-page .footer-section {
+    padding: 30px 30px 28px;
+    border-radius: 0 !important;
 }
 
 .reservations-page .footer-section h4 {
     font-size: 1.1rem;
-    margin-bottom: 20px;
+    margin-bottom: 18px;
     letter-spacing: 2px;
-    color: #fff;
+    color: #f7f2e8;
     border-bottom: 1px solid #fff;
     display: inline-block;
     padding-bottom: 5px;
@@ -1122,17 +1393,20 @@ FORMULARIO DE LA PAGINA RESERVATION
 .reservations-page .footer-section ul {
     list-style: none;
     padding: 0;
+    display: grid;
+    gap: 14px;
 }
 
 .reservations-page .footer-section ul li {
-    margin-bottom: 12px;
+    margin-bottom: 0;
 }
 
 .reservations-page .footer-section ul li a {
     text-decoration: none;
-    color: #bbb;
+    color: #f7f2e8;
     transition: color 0.3s ease;
     font-size: 0.9rem;
+    line-height: 1.7;
 }
 
 .reservations-page .footer-section ul li a:hover {
@@ -1140,25 +1414,38 @@ FORMULARIO DE LA PAGINA RESERVATION
 }
 
 .reservations-page .footer-section p {
-    color: #bbb;
+    color: rgba(247, 242, 232, .78);
     font-size: 0.9rem;
-    line-height: 1.6;
+    line-height: 1.7;
+}
+
+.reservations-page .social-links {
+    display: flex;
+    gap: 14px;
+    margin-top: 14px;
 }
 
 .reservations-page .social-links a {
+    width: 42px;
+    height: 42px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
     text-decoration: none;
     color: #fff;
-    margin-right: 15px;
     font-size: 0.8rem;
     font-weight: bold;
+    border-radius: 0 !important;
+    background: rgba(255, 255, 255, .10);
     border: 1px solid rgba(255, 255, 255, 0.3);
-    padding: 5px 10px;
+    padding: 0;
     transition: all 0.3s ease;
+    margin-right: 0;
 }
 
 .reservations-page .social-links a:hover {
     background: #fff;
-    color: #000;
+    color: #0d2742;
 }
 
 .reservations-page .footer-bottom {
@@ -1170,12 +1457,17 @@ FORMULARIO DE LA PAGINA RESERVATION
 
 .reservations-page .footer-bottom p {
     font-size: 0.8rem;
-    color: #666;
+    color: #f7f2e8;
     letter-spacing: 1px;
 }
 
 /* RESPONSIVE MEJORADO PARA RESERVAS */
 @media (max-width: 768px) {
+    .res-slide {
+        flex: 0 0 100% !important;
+        min-width: 100% !important;
+    }
+
     .reservations-page #nav-links.nav-links {
         display: flex !important;
         flex-direction: column !important;
@@ -1183,7 +1475,8 @@ FORMULARIO DE LA PAGINA RESERVATION
         top: 100% !important;
         left: 0 !important;
         width: 100% !important;
-        background-color: #1a1a1a !important;
+        background: rgba(247, 242, 232, .98) !important;
+        backdrop-filter: blur(8px);
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.4s ease-in-out;
@@ -1192,7 +1485,7 @@ FORMULARIO DE LA PAGINA RESERVATION
         margin: 0 !important;
         list-style: none !important;
         border: none !important;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
     }
 
     .reservations-page #nav-links.nav-links.active {
@@ -1204,19 +1497,19 @@ FORMULARIO DE LA PAGINA RESERVATION
         width: 100% !important;
         display: block !important;
         text-align: center !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.05) !important;
+        border-top: 1px solid rgba(31, 78, 121, 0.05) !important;
     }
 
     .reservations-page .nav-links li a {
         display: block !important;
         padding: 20px 0 !important;
-        color: #bbb !important;
+        color: var(--theme-ink) !important;
         background: transparent !important;
     }
 
     .reservations-page .menu-toggle {
         display: block !important;
-        color: white !important;
+        color: var(--theme-blue) !important;
         font-size: 1.5rem !important;
         background: transparent;
         border: none;
@@ -1240,9 +1533,114 @@ FORMULARIO DE LA PAGINA RESERVATION
         font-size: 16px !important;
     }
 }
+
 /* Reserva el espacio del menú antes de que cargue */
 #universal-navbar {
-    min-height: 80px; /* Ajusta a la altura real de tu nav */
+    min-height: 80px;
     display: block;
-    background-color: #000; /* O el color de tu fondo para que no se vea blanco */
+    background-color: #000;
+}
+
+
+/* =======================================================
+   OVERRIDE FINAL — SIN BORDES REDONDEADOS
+   ======================================================= */
+
+.top-section,
+.top-section::before,
+.box,
+.slider,
+.slide,
+.gallery-item,
+.galery-item,
+.lightbox-content,
+.close,
+.prev,
+.next,
+.main-navbar,
+.info-box,
+.info-box .subtitle,
+.reservation-form,
+.form-group input,
+.form-group select,
+.form-group textarea,
+.reservation-form input,
+.reservation-form select,
+.reservation-form textarea,
+.menu-detail-item select,
+.contact-card,
+.follow-up-box,
+.footer-section,
+.res-slider-container,
+.res-slide .galery-item,
+.reservations-page .menu-details-container,
+.reservations-page .menu-details-container select,
+.reservations-page .menu-details-container input,
+.reservations-page .footer-section,
+.btn-submit,
+.btn-reservation,
+.btn-whatsapp,
+.slider-buttons button,
+.social-links a,
+.reservations-page .social-links a,
+.reservations-page .mode-selector {
+    border-radius: 0 !important;
+}
+
+.close::before,
+.prev::before,
+.next::before {
+    border-radius: 0 !important;
+}
+
+.contact-icon {
+    border-radius: 0 !important;
+}
+
+.btn-whatsapp i {
+    font-size: 1.2rem;
+    transform: translateY(1px);
+}
+
+.logo-link {
+    position: relative;
+    overflow: hidden;
+}
+
+.logo-link::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 80%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(182, 144, 82, 0.18),
+        rgba(182, 144, 82, 0.42),
+        rgba(182, 144, 82, 0.18),
+        transparent
+    );
+    transform: skewX(-20deg);
+    z-index: 1;
+    pointer-events: none;
+    animation: goldSweep 10s ease-in-out infinite;
+}
+
+.logo-link img {
+    position: relative;
+    z-index: 2;
+}
+
+@keyframes goldSweep {
+    0% {
+        left: -120%;
+    }
+    45% {
+        left: 120%;
+    }
+    100% {
+        left: 120%;
+    }
 }
