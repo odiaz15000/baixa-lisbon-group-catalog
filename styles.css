@@ -405,14 +405,33 @@ button[type="submit"]:hover {
    3. NAVEGACIÓN MODERNA Y RESPONSIVE
    ======================================================= */
 .main-navbar {
-    background: rgba(247, 242, 232, 0.88);
+    background: linear-gradient(
+        90deg,
+        rgba(13, 39, 66, 0.95) 0%,
+        rgba(20, 52, 86, 0.92) 18%,
+        rgba(247, 242, 232, 0.95) 42%,
+        rgba(247, 242, 232, 0.95) 100%
+    );
     width: 100%;
     position: sticky;
     top: 0;
     z-index: 2000;
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-bottom: 1px solid rgba(31, 78, 121, 0.12);
     box-shadow: 0 10px 30px rgba(27, 47, 74, 0.08);
+}
+/*responsive para el movil */
+@media (max-width: 768px) {
+    .nav-links {
+        background: linear-gradient(
+            180deg,
+            rgba(247, 242, 232, 0.98) 0%,
+            rgba(247, 242, 232, 0.98) 100%
+        );
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+    }
 }
 
 .navbar-container {
@@ -1602,45 +1621,85 @@ FORMULARIO DE LA PAGINA RESERVATION
     transform: translateY(1px);
 }
 
-.logo-link {
-    position: relative;
-    overflow: hidden;
-}
+/* =======================================================
+   FIX DEFINITIVO MENÚ HAMBURGUESA MOBILE
+   ======================================================= */
+@media (max-width: 768px) {
 
-.logo-link::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: -120%;
-    width: 80%;
-    height: 100%;
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(182, 144, 82, 0.18),
-        rgba(182, 144, 82, 0.42),
-        rgba(182, 144, 82, 0.18),
-        transparent
-    );
-    transform: skewX(-20deg);
-    z-index: 1;
-    pointer-events: none;
-    animation: goldSweep 10s ease-in-out infinite;
-}
-
-.logo-link img {
-    position: relative;
-    z-index: 2;
-}
-
-@keyframes goldSweep {
-    0% {
-        left: -120%;
+    #universal-navbar {
+        position: relative;
+        z-index: 999999;
+        overflow: visible !important;
     }
-    45% {
-        left: 120%;
+
+    .main-navbar {
+        position: sticky;
+        top: 0;
+        z-index: 999999;
+        overflow: visible !important;
     }
-    100% {
-        left: 120%;
+
+    .navbar-container {
+        position: relative;
+        z-index: 999999;
+        overflow: visible !important;
+    }
+
+    .menu-toggle {
+        display: block !important;
+        position: relative;
+        z-index: 1000001;
+        pointer-events: auto;
+    }
+
+    .nav-links {
+        position: absolute !important;
+        top: 100% !important;
+        left: 0 !important;
+        right: 0 !important;
+        width: 100% !important;
+
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 0 !important;
+
+        max-height: 0 !important;
+        overflow: hidden !important;
+
+        background: #f7f2e8 !important;
+        box-shadow: 0 16px 30px rgba(0, 0, 0, 0.12) !important;
+        border-top: 1px solid rgba(31, 78, 121, 0.10) !important;
+
+        z-index: 1000000 !important;
+        transition: max-height 0.4s ease-in-out !important;
+    }
+
+    .nav-links.active {
+        max-height: 500px !important;
+        overflow: visible !important;
+        border-bottom: 1px solid rgba(31, 78, 121, 0.10) !important;
+    }
+
+    .nav-links li {
+        width: 100% !important;
+        display: block !important;
+        border-top: 1px solid rgba(31, 78, 121, 0.05) !important;
+    }
+
+    .nav-links li a {
+        display: block !important;
+        padding: 20px !important;
+        color: var(--theme-ink) !important;
+        background: transparent !important;
+    }
+
+    .hero-section,
+    .hero-section .overlay,
+    .hero-content-wrapper {
+        z-index: 1 !important;
+    }
+
+    .hero-section .overlay {
+        pointer-events: none !important;
     }
 }
